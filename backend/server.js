@@ -12,12 +12,15 @@ connectDB();
 
 app.use(express.json());
 
-//Routes
-app.use("/api/user", userRoutes);
-
 app.get("/", (req, res) => {
   res.send("API is Running");
 });
+
+//Routes
+app.use("/api/user", userRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`.yellow.bold);
