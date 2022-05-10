@@ -23,7 +23,7 @@ const HomePage = () => {
         w="100%"
         m="40px 0 15px 0"
         borderRadius="lg"
-        boxWidth="1px"
+        borderWidth="1px"
         boxShadow="0px 0px 10px rgba(0, 0, 0, 0.1)"
       >
         <Text fontSize="4xl" fontFamily="Work Sans" color="black">
@@ -35,7 +35,7 @@ const HomePage = () => {
         w="100%"
         p={4}
         borderRadius="lg"
-        boxWidth="1px"
+        borderWidth="1px"
         color="black"
       >
         <Tabs variant="soft-rounded">
