@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const colors = require("colors");
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
