@@ -2,6 +2,7 @@ const expressAsyncHandler = require("express-async-handler");
 const generateToken = require("../config/generateToken");
 const User = require("../models/userModel");
 
+// Register a new user
 const registerUser = expressAsyncHandler(async (req, res) => {
   const { name, email, password, pic } = req.body;
 
@@ -32,6 +33,7 @@ const registerUser = expressAsyncHandler(async (req, res) => {
   }
 });
 
+// Login a user
 const authUser = expressAsyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -50,4 +52,18 @@ const authUser = expressAsyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerUser, authUser };
+// Get all users
+const allUsers = expressAsyncHandler(async (req, res) => {
+  const keyword = req.query.search
+    ? {
+        $or: [
+          { name: { $regex: req.query.search, $options: "i" } },
+          { email: { $regex: req.query.search, $options: "i" } },
+        ],
+      }
+    : {};
+  const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
+  res.json(users);
+});
+
+module.exports = { registerUser, authUser, allUsers };
