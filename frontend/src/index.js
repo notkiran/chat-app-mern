@@ -8,11 +8,11 @@ import ChatProvider from "./Context/ChatProvider";
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 root.render(
-  <ChatProvider>
+  <ChakraProvider>
     <Router>
-      <ChakraProvider>
+      <ChatProvider>
         <App />
-      </ChakraProvider>
+      </ChatProvider>
     </Router>
-  </ChatProvider>
+  </ChakraProvider>
 );
