@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { getSender } from "../Config/ChatLogics";
 import { ChatState } from "../Context/ChatProvider";
 import ChatLoading from "./ChatLoading";
+import GroupChatModal from "./Misc/GroupChatModal";
 
 const MyChats = () => {
   const toast = useToast();
@@ -20,7 +21,6 @@ const MyChats = () => {
       };
 
       const { data } = await axios.get("/api/chat", config);
-      console.log(data);
       setChats(data);
     } catch (error) {
       toast({
@@ -60,13 +60,15 @@ const MyChats = () => {
         w="100%"
       >
         My Chats
-        <Button
-          d="flex"
-          fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-          rightIcon={<AddIcon />}
-        >
-          New Group Chat
-        </Button>
+        <GroupChatModal>
+          <Button
+            d="flex"
+            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+            rightIcon={<AddIcon />}
+          >
+            New Group Chat
+          </Button>
+        </GroupChatModal>
       </Box>
       <Box
         d="flex"
