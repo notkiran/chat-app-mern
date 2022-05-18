@@ -7,9 +7,11 @@ import { ChatState } from "../Context/ChatProvider";
 import ChatLoading from "./ChatLoading";
 import GroupChatModal from "./Misc/GroupChatModal";
 
-const MyChats = () => {
+const MyChats = ({ fetchAgain }) => {
   const toast = useToast();
+
   const [loggedUser, setLoggedUser] = useState();
+
   const { user, selectedChat, setSelectedChat, chats, setChats } = ChatState();
 
   const fetchChats = async () => {
@@ -25,10 +27,11 @@ const MyChats = () => {
     } catch (error) {
       toast({
         title: "Error Occured!",
+        description: "Failed to Load the chats",
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "top-left",
+        position: "bottom-left",
       });
     }
   };
@@ -36,7 +39,7 @@ const MyChats = () => {
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
-  }, []);
+  }, [fetchAgain]);
 
   return (
     <Box

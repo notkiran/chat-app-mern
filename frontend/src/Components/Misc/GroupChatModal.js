@@ -10,7 +10,6 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  toast,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
@@ -44,7 +43,7 @@ const GroupChatModal = ({ children }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(`/api/user?search=${query}`, config);
+      const { data } = await axios.get(`/api/user?search=${search}`, config);
       setSearchResust(data);
       setLoading(false);
     } catch (error) {
