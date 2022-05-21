@@ -27,9 +27,7 @@ const sendMessage = asyncHandler(async (req, res, next) => {
     });
       
     await Chat.findByIdAndUpdate(req.body.chatId, {
-      $push: { messages: message._id },
     } catch (error) {
-      console.log(error);
   }
 });
 
