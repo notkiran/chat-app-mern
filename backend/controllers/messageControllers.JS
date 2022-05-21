@@ -26,8 +26,11 @@ const sendMessage = asyncHandler(async (req, res, next) => {
       select: "name pic email",
     });
       
-      await Chat.findByIdAndUpdate(req.body.chatId, {
-  } catch (error) {}
+    await Chat.findByIdAndUpdate(req.body.chatId, {
+      $push: { messages: message._id },
+    } catch (error) {
+      console.log(error);
+  }
 });
 
 module.exports = { sendMessage };
