@@ -32,7 +32,7 @@ import NotificationBadge from "react-notification-badge";
 import { Effect } from "react-notification-badge";
 
 const SideDrawer = () => {
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   const toast = useToast();
 
   const [search, setSearch] = useState("");
