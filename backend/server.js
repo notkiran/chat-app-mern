@@ -48,7 +48,7 @@ if (process.env.NODE_ENV === "production") {
 // app.use(errorHandler);
 
 const server = app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`.yellow.bold);
+  // console.log(`Server started on port ${PORT}`.yellow.bold);
 });
 
 const io = require("socket.io")(server, {
