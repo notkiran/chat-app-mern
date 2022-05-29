@@ -44,8 +44,8 @@ if (process.env.NODE_ENV === "production") {
 
 // -------------- Error Handling --------------
 
-app.use(notFound);
-app.use(errorHandler);
+// app.use(notFound);
+// app.use(errorHandler);
 
 const server = app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`.yellow.bold);
