@@ -16,10 +16,6 @@ connectDB();
 
 app.use(express.json());
 
-// app.get("/", (req, res) => {
-//   res.send("API is Running");
-// });
-
 //Routes
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
@@ -28,6 +24,7 @@ app.use("/api/message", messageRoutes);
 // -------------- Deployment --------------
 
 const __dirname1 = path.resolve();
+
 if (process.env.NODE_ENV === "production") {
   console.log("Production mode");
   app.use(express.static(path.join(__dirname1, "/frontend/build")));
@@ -38,7 +35,7 @@ if (process.env.NODE_ENV === "production") {
 } else {
   console.log("Development mode");
   app.get("/", (req, res) => {
-    res.send("API is Running Successfully");
+    res.send("API is running..");
   });
 }
 
@@ -47,9 +44,10 @@ if (process.env.NODE_ENV === "production") {
 app.use(notFound);
 app.use(errorHandler);
 
-const server = app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`.yellow.bold);
-});
+const server = app.listen(
+  PORT,
+  console.log(`Server started on port ${PORT}`.yellow.bold)
+);
 
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
